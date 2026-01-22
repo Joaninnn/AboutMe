@@ -45,7 +45,7 @@ const ContactSection = () => {
 
           <p className={`${scss.contactIntro} ${isVisible ? scss.visible : ""}`}>
             Have a project in mind or want to collaborate? Feel free to reach out. 
-            I'm always open to discussing new opportunities and ideas.
+            I&apos;m always open to discussing new opportunities and ideas.
           </p>
 
           <form className={`${scss.contactForm} ${isVisible ? scss.visible : ""}`} onSubmit={handleSubmit}>
@@ -99,7 +99,7 @@ const ContactSection = () => {
 
             {status === "success" && (
               <div className={`${scss.formMessage} ${scss.success}`}>
-                Message sent successfully! I'll get back to you soon.
+                Message sent successfully! I&apos;ll get back to you soon.
               </div>
             )}
             {status === "error" && (

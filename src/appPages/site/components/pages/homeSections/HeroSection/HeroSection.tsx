@@ -45,7 +45,7 @@ const HeroSection = () => {
         );
 
         return () => clearTimeout(timeout);
-    }, [typingText, isDeleting, phraseIndex]);
+    }, [typingText, isDeleting, phraseIndex, phrases]);
 
     useEffect(() => {
         const handleScroll = () => {
