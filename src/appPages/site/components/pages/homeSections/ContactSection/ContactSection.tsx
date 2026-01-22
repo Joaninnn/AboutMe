@@ -11,20 +11,41 @@ const ContactSection = () => {
     email: "",
     message: ""
   });
-  const [status, setStatus] = useState<"idle" | "success" | "error">("idle");
+  const [status, setStatus] = useState<"idle" | "success" | "error" | "loading">("idle");
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setStatus("loading");
     
-    // Simulate form submission
-    setTimeout(() => {
-      setStatus("success");
-      setFormData({ name: "", email: "", message: "" });
-      
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        setStatus("success");
+        setFormData({ name: "", email: "", message: "" });
+        
+        setTimeout(() => {
+          setStatus("idle");
+        }, 5000);
+      } else {
+        setStatus("error");
+        setTimeout(() => {
+          setStatus("idle");
+        }, 5000);
+      }
+    } catch (error) {
+      console.error("Error sending message:", error);
+      setStatus("error");
       setTimeout(() => {
         setStatus("idle");
-      }, 3000);
-    }, 1000);
+      }, 5000);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -93,8 +114,12 @@ const ContactSection = () => {
               />
             </div>
 
-            <button type="submit" className={scss.formSubmit}>
-              Send Message
+            <button 
+              type="submit" 
+              className={scss.formSubmit}
+              disabled={status === "loading"}
+            >
+              {status === "loading" ? "Sending..." : "Send Message"}
             </button>
 
             {status === "success" && (
