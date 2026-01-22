@@ -7,14 +7,15 @@ import { FaGithub, FaLinkedin, FaTelegram, FaInstagram } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 import profile from "@/assets/hero.jpg";
 
+const phrases = [
+    "Building Clean Code",
+    "Creating Scalable Apps",
+    "Solving Real Problems",
+    "Frontend Development",
+];
+
 const HeroSection = () => {
     const [typingText, setTypingText] = useState("");
-    const phrases = [
-        "Building Clean Code",
-        "Creating Scalable Apps",
-        "Solving Real Problems",
-        "Frontend Development",
-    ];
     const [phraseIndex, setPhraseIndex] = useState(0);
     const [isDeleting, setIsDeleting] = useState(false);
 
@@ -45,7 +46,7 @@ const HeroSection = () => {
         );
 
         return () => clearTimeout(timeout);
-    }, [typingText, isDeleting, phraseIndex, phrases]);
+    }, [typingText, isDeleting, phraseIndex]);
 
     useEffect(() => {
         const handleScroll = () => {
