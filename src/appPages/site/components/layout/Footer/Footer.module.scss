@@ -1,0 +1,28 @@
+.footer {
+  padding: 4rem 0 2rem;
+  border-top: 1px solid var(--accent-dim);
+  text-align: center;
+}
+
+.footerSocials {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.footerSocialLink {
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: color 0.3s ease, transform 0.3s ease;
+
+  &:hover {
+    color: var(--text-primary);
+    transform: translateY(-3px);
+  }
+}
+
+.footerCopyright {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}

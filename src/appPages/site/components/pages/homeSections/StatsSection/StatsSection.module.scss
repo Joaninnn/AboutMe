@@ -1,0 +1,140 @@
+.stats {
+  background: var(--bg-secondary);
+}
+
+.sectionHeader {
+  margin-bottom: 4rem;
+}
+
+.sectionLabel {
+  font-size: 0.8rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  margin-bottom: 0.5rem;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+
+  &.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.sectionTitle {
+  font-family: var(--font-syne);
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1) 0.2s;
+
+  &.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 1s cubic-bezier(0.23, 1, 0.32, 1) 0.4s;
+
+  &.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  @media (max-width: 968px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.statsCard {
+  padding: 2.5rem;
+  border: 1px solid var(--accent-dim);
+  background: rgba(255, 255, 255, 0.02);
+  transition: all 0.3s ease;
+
+  &:hover {
+    border-color: var(--accent);
+    transform: translateY(-5px);
+    background: rgba(255, 255, 255, 0.05);
+  }
+}
+
+.statsCardTitle {
+  font-family: var(--font-syne);
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  color: var(--text-secondary);
+}
+
+.streakDisplay {
+  text-align: center;
+  padding: 3rem 2rem;
+}
+
+.streakNumber {
+  font-family: var(--font-syne);
+  font-size: 5rem;
+  font-weight: 800;
+  line-height: 1;
+  margin-bottom: 1rem;
+  background: linear-gradient(135deg, #ffffff 0%, #808080 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.streakLabel {
+  font-size: 1rem;
+  color: var(--text-secondary);
+}
+
+.languagesList {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.languageItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.languageName {
+  font-weight: 600;
+  min-width: 120px;
+}
+
+.languageBar {
+  flex: 1;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  margin: 0 1rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.languageBarFill {
+  height: 100%;
+  background: var(--accent);
+  transition: width 1s ease;
+}
+
+.languagePercent {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  min-width: 40px;
+  text-align: right;
+}

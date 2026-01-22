@@ -1,0 +1,161 @@
+/* Progress Bar */
+.progressBar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  background: var(--accent);
+  z-index: 9999;
+  transition: width 0.1s ease;
+}
+
+/* Vertical Side Text */
+.verticalText {
+  position: fixed;
+  right: -6.5rem;
+  top: 50%;
+  transform: translateY(-50%) rotate(-90deg);
+  transform-origin: center;
+  font-family: var(--font-syne);
+  font-size: 1.2rem;
+  font-weight: 800;
+  letter-spacing: 0.5em;
+  color: rgba(255, 255, 255, 0.15);
+  z-index: 100;
+  pointer-events: none;
+  transition: color 0.3s ease;
+
+  @media (max-width: 1100px) {
+    display: none;
+  }
+}
+
+body:hover .verticalText {
+  color: rgba(255, 255, 255, 0.25);
+}
+
+/* Animated Tech Lightning Background */
+.techArrowsBg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 0;
+  overflow: visible;
+  opacity: 1;
+  transition: opacity 0.5s ease;
+
+  &.dimmed {
+    opacity: 0.5;
+  }
+}
+
+.arrow {
+  position: absolute;
+  width: 2px;
+  height: 80px;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(255, 255, 255, 0.8) 10%,
+    rgba(255, 255, 255, 0.4) 50%,
+    transparent 100%
+  );
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+  animation: lightning linear infinite;
+  opacity: 0;
+}
+
+/* Lightning strike animation */
+@keyframes lightning {
+  0% {
+    transform: translateY(-100px);
+    opacity: 0;
+  }
+  5% {
+    opacity: 1;
+  }
+  10% {
+    opacity: 0.8;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    transform: translateY(calc(100vh + 200px));
+    opacity: 0;
+  }
+}
+
+/* Lightning from right to left diagonal */
+.arrow:nth-child(1) {
+  left: 90%;
+  animation: lightning 3s infinite;
+  animation-delay: 0s;
+  transform: rotate(-20deg);
+}
+.arrow:nth-child(2) {
+  left: 85%;
+  animation: lightning 4s infinite;
+  animation-delay: 1.5s;
+  transform: rotate(-25deg);
+  height: 100px;
+}
+.arrow:nth-child(3) {
+  left: 95%;
+  animation: lightning 3.5s infinite;
+  animation-delay: 3s;
+  transform: rotate(-15deg);
+}
+.arrow:nth-child(4) {
+  left: 80%;
+  animation: lightning 4.5s infinite;
+  animation-delay: 0.8s;
+  transform: rotate(-30deg);
+  height: 90px;
+}
+
+/* Lightning from left to right diagonal */
+.arrow:nth-child(5) {
+  left: 10%;
+  animation: lightning 3.8s infinite;
+  animation-delay: 2s;
+  transform: rotate(20deg);
+}
+.arrow:nth-child(6) {
+  left: 15%;
+  animation: lightning 4.2s infinite;
+  animation-delay: 0.5s;
+  transform: rotate(25deg);
+  height: 95px;
+}
+.arrow:nth-child(7) {
+  left: 5%;
+  animation: lightning 3.3s infinite;
+  animation-delay: 2.8s;
+  transform: rotate(15deg);
+}
+
+/* Lightning straight down */
+.arrow:nth-child(8) {
+  left: 50%;
+  animation: lightning 3s infinite;
+  animation-delay: 1.2s;
+  transform: rotate(0deg);
+  height: 110px;
+}
+.arrow:nth-child(9) {
+  left: 45%;
+  animation: lightning 4s infinite;
+  animation-delay: 3.5s;
+  transform: rotate(5deg);
+}
+.arrow:nth-child(10) {
+  left: 55%;
+  animation: lightning 3.7s infinite;
+  animation-delay: 0.3s;
+  transform: rotate(-5deg);
+  height: 85px;
+}
