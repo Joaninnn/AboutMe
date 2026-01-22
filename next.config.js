@@ -19,6 +19,12 @@ const nextConfig = {
     
     // Сжатие
     compress: true,
+
+    // Настройки Sass
+    sassOptions: {
+        api: 'modern-compiler',
+        silenceDeprecations: ['legacy-js-api'],
+    },
 };
 
 module.exports = nextConfig;
