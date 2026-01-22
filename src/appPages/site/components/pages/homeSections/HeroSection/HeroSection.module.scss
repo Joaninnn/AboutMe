@@ -66,8 +66,8 @@
 }
 
 .heroTitle {
-    font-family: "Special Gothic Expanded One", sans-serif;
-    font-weight: 400;
+    font-family: var(--font-syne);
+    font-weight: 700;
     font-style: normal;
     font-size: clamp(2rem, 5vw, 4rem);
     line-height: 1;
