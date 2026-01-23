@@ -5,55 +5,71 @@ import scss from "./BackgroundEffects.module.scss";
 import { usePathname } from "next/navigation";
 
 const BackgroundEffects = () => {
-  const pathname = usePathname();
-  const [isHomePage, setIsHomePage] = useState(true);
+    const pathname = usePathname();
+    const [arrowsOpacity, setArrowsOpacity] = useState(1);
 
-  useEffect(() => {
-    // Проверяем, находимся ли мы на главной странице или в hero секции
-    const checkIfHome = () => {
-      const heroSection = document.getElementById("hero");
-      if (heroSection) {
-        const rect = heroSection.getBoundingClientRect();
-        const isInViewport = rect.top < window.innerHeight && rect.bottom > 0;
-        setIsHomePage(isInViewport);
-      }
-    };
+    useEffect(() => {
+        // Progress bar on scroll
+        const handleScroll = () => {
+            const windowHeight =
+                document.documentElement.scrollHeight -
+                document.documentElement.clientHeight;
+            const scrolled = (window.scrollY / windowHeight) * 100;
+            const progressBar = document.getElementById("progressBar");
+            if (progressBar) {
+                progressBar.style.width = scrolled + "%";
+            }
 
-    checkIfHome();
-    window.addEventListener("scroll", checkIfHome);
-    return () => window.removeEventListener("scroll", checkIfHome);
-  }, [pathname]);
-  useEffect(() => {
-    // Progress bar on scroll
-    const handleScroll = () => {
-      const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-      const scrolled = (window.scrollY / windowHeight) * 100;
-      const progressBar = document.getElementById("progressBar");
-      if (progressBar) {
-        progressBar.style.width = scrolled + "%";
-      }
-    };
+            // Определяем текущую секцию для изменения opacity стрелок
+            const heroSection = document.getElementById("hero");
+            const footerSection = document.querySelector("footer");
 
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+            if (heroSection && footerSection) {
+                const heroRect = heroSection.getBoundingClientRect();
+                const footerRect = footerSection.getBoundingClientRect();
 
-  return (
-    <>
-      {/* Progress Bar */}
-      <div id="progressBar" className={scss.progressBar}></div>
+                // Проверяем, находимся ли мы в Hero секции
+                const isInHero =
+                    heroRect.top <= window.innerHeight / 2 &&
+                    heroRect.bottom >= window.innerHeight / 2;
 
-      {/* Vertical Side Text */}
-      <div className={scss.verticalText}>JOANINNN</div>
+                // Проверяем, находимся ли мы в Footer секции
+                const isInFooter = footerRect.top <= window.innerHeight;
 
-      {/* Animated Tech Lightning Background */}
-      <div className={`${scss.techArrowsBg} ${!isHomePage ? scss.dimmed : ""}`}>
-        {[...Array(10)].map((_, i) => (
-          <div key={i} className={scss.arrow}></div>
-        ))}
-      </div>
-    </>
-  );
+                if (isInHero) {
+                    setArrowsOpacity(1); // 100% в Hero
+                } else if (isInFooter) {
+                    setArrowsOpacity(1); // 100% в Footer
+                } else {
+                    setArrowsOpacity(0.4); // 30% в остальных секциях
+                }
+            }
+        };
+
+        window.addEventListener("scroll", handleScroll);
+        handleScroll(); // Вызываем сразу для начальной установки
+        return () => window.removeEventListener("scroll", handleScroll);
+    }, []);
+
+    return (
+        <>
+            {/* Progress Bar */}
+            <div id="progressBar" className={scss.progressBar}></div>
+
+            {/* Vertical Side Text */}
+            <div className={scss.verticalText}>JOANINNN</div>
+
+            {/* Animated Tech Lightning Background */}
+            <div
+                className={scss.techArrowsBg}
+                style={{ opacity: arrowsOpacity }}
+            >
+                {[...Array(10)].map((_, i) => (
+                    <div key={i} className={scss.arrow}></div>
+                ))}
+            </div>
+        </>
+    );
 };
 
 export default BackgroundEffects;

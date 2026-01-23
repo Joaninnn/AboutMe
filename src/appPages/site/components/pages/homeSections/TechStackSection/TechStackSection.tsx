@@ -24,7 +24,7 @@ const TechStackSection = () => {
         {Object.entries(techStack).map(([category, techs], index) => (
           <div key={category} className={`${scss.techCategory} ${isVisible ? scss.visible : ""}`} style={{ transitionDelay: `${0.6 + index * 0.1}s` }}>
             <h3 className={scss.techCategoryTitle}>{category}</h3>
-            <div className={scss.techGrid}>
+            <div className={`${scss.techGrid} ${scss[`animate${index % 2 === 0 ? 'Right' : 'Left'}`]}`}>
               {techs.map((tech) => (
                 <div key={tech} className={scss.techItem}>
                   <div className={scss.techName}>{tech}</div>

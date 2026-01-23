@@ -1,5 +1,7 @@
 .projects {
-  background: var(--bg-primary);
+  background: transparent;
+  position: relative;
+  z-index: 2;
 }
 
 .sectionHeader {

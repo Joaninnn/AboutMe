@@ -1,5 +1,7 @@
 .stats {
-  background: var(--bg-secondary);
+  background: transparent;
+  position: relative;
+  z-index: 2;
 }
 
 .sectionHeader {
