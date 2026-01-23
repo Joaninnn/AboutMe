@@ -125,7 +125,7 @@ const HeroSection = () => {
                                 <FaTelegram size={20} />
                             </a>
                             <a
-                                href="https://www.linkedin.com/in/nurmuhammet-altybaev"
+                                href="https://www.linkedin.com/in/nurmuhammet-altybaev-50b222338"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className={scss.socialLink}
