@@ -133,15 +133,7 @@ const HeroSection = () => {
                             >
                                 <FaLinkedin size={20} />
                             </a>
-                            <a
-                                href="https://www.instagram.com/joaninnn_"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className={scss.socialLink}
-                                title="Instagram"
-                            >
-                                <FaInstagram size={20} />
-                            </a>
+                          
                         </div>
                     </div>
 
