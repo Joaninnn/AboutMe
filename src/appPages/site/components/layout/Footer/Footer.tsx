@@ -38,14 +38,7 @@ const Footer = () => {
           >
             <FaLinkedin size={20} />
           </a>
-          <a
-            href="https://www.instagram.com/joaninnn_"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={scss.footerSocialLink}
-          >
-            <FaInstagram size={20} />
-          </a>
+        
         </div>
         <div className={scss.footerCopyright}>
           © {new Date().getFullYear()} Nurmuhammet Altybaev. All rights reserved.
